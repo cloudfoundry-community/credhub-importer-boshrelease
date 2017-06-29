@@ -1,0 +1,37 @@
+---
+meta:
+  environment: credhub-seeder-warden
+
+  stemcell:
+    name: bosh-warden-boshlite-ubuntu-trusty-go_agent
+    version: latest
+
+update:
+  canaries: 1
+  max_in_flight: 50
+  canary_watch_time: 1000-30000
+  update_watch_time: 1000-30000
+
+instance_groups:
+  - name: just_install_packages
+    networks:
+      - name: credhub_seeder1
+
+compilation:
+  cloud_properties:
+    name: random
+
+resource_pools:
+  - name: small_z1
+    cloud_properties:
+      name: random
+
+networks:
+- name: credhub_seeder1
+  type: manual
+  subnets:
+  - range: 10.244.148.0/24
+    name: credhub_seeder1
+    gateway: 10.244.148.1
+    static:
+      - 10.244.148.2 - 10.244.148.60
