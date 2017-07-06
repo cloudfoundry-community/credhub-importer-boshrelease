@@ -5,6 +5,7 @@ templates:
   config/ca.pem: config/ca.pem
   config/credentials_seed.json: config/credentials_seed.json
   bin/credhub-seeder: bin/credhub-seeder
+  bin/ctl: bin/ctl
 
 packages:
 - credhub-cli
