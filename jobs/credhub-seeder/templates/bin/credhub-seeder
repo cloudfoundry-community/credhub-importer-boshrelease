@@ -7,6 +7,8 @@ credhub login --server <%= p('credhub.server') %> \
         --password <%= p('credhub.password') %> \
         --ca-cert /var/vcap/jobs/credhub-seeder/config/ca.pem
 
+exec 2>&1 >/dev/null
+
 for cred in $(jq -r '.[] | @base64' ${1}); do
 
     cred_jq() {
