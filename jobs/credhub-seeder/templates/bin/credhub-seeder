@@ -1,0 +1,58 @@
+#!/bin/bash
+
+PATH=${PATH}:/var/vcap/packages/credhub-cli/bin/:/var/vcap/packages/jq/bin/
+
+credhub login --server <%= p('credhub.server') %> \
+        --username <%= p('credhub.username') %> \
+        --password <%= p('credhub.password') %> \
+        --ca-cert /var/vcap/jobs/credhub-seeder/config/ca.pem
+
+for cred in $(jq -r '.[] | @base64' ${1}); do
+
+    cred_jq() {
+	 echo ${cred} | base64 --decode | jq -r -c ${1}
+    }
+
+    cmd="credhub set --name=$(cred_jq '.name')"
+
+    case $(cred_jq '.type') in
+	value)
+	    value=$(cred_jq '.value')
+	    ${cmd} --type=value --value=${value}
+	    ;;
+	json)
+	    value=$(cred_jq '.value')
+	    ${cmd} --type=json --value=${value}
+	    ;;
+	password)
+	    password=$(cred_jq '.password')
+	    ${cmd} --type=password --password=${password}
+	    ;;
+	user)
+	    username=$(cred_jq '.username')	    
+	    password=$(cred_jq '.password')
+	    ${cmd} --type=user --username=${username} --password=${password}
+	    ;;
+	certificate)
+	    certificate=$(cred_jq '.certificate')	    
+	    root=$(cred_jq '.root')
+	    private=$(cred_jq '.private')
+	    ${cmd} --type=certificate --certificate=<(echo "${certificate}") \
+		   --root=<(echo "${root}") --private=<(echo "${private}")
+	    ;;
+	ssh)
+	    public=$(cred_jq '.public')
+	    private=$(cred_jq '.private')
+	    ${cmd} --type=ssh --public=<(echo "${public}") --private=<(echo "${private}")
+	    ;;
+	rsa)
+	    public=$(cred_jq '.public')
+	    private=$(cred_jq '.private')
+	    ${cmd} --type=rsa --public=<(echo "${public}") --private=<(echo "${private}")
+	    ;;
+    esac
+
+done
+
+	
+

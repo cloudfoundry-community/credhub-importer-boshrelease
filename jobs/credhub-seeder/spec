@@ -1,0 +1,69 @@
+---
+name: credhub-seeder
+
+templates:
+  config/ca.pem: config/ca.pem
+  config/credentials_seed.json: config/credentials_seed.json
+  bin/credhub-seeder: bin/credhub-seeder
+
+packages:
+- credhub-cli
+- jq
+
+properties:
+  credhub.server:
+    description: Credhub server url
+  credhub.username:
+    description: Credhub username
+  credhub.password:
+    description: Credhub password
+  credhub.ca_cert:
+    description: Credhub CA cert
+  credhub.seeded_credentials:
+    description: Array of credentials to seed to Credhub
+    example: |
+      - type: value
+        name: /example/value
+        value: example
+      - type: json
+        name: /example/json
+        value: { "key": "value" }
+      - type: password
+        name: /example/password
+        password: example
+      - type: user
+        name: /example/user
+        username: admin
+        password: example
+      - type: certificate
+        name: /example/certificate
+        certificate: |
+          -----BEGIN CERTIFICATE-----
+          ... Cert
+          -----END CERTIFICATE-----
+        root: |
+          -----BEGIN CERTIFICATE-----
+          ... CA Cert
+          -----END CERTIFICATE-----
+        private:
+          -----BEGIN RSA PRIVATE KEY-----
+          ... Private Key
+          -----END RSA PRIVATE KEY-----
+      - type: ssh
+        name: /example/ssh
+        public: |
+          ssh-rsa ...
+        private: |
+          -----BEGIN RSA PRIVATE KEY-----
+          ... Private Key
+          -----END RSA PRIVATE KEY-----
+      - type: rsa
+        name: /example/rsa
+        public: |
+          -----BEGIN PUBLIC KEY-----
+          ... Public Key
+          -----END PUBLIC KEY-----
+        private: |
+          -----BEGIN RSA PRIVATE KEY-----
+          ... Private Key
+          -----END RSA PRIVATE KEY-----

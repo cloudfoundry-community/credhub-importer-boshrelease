@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -eux
+mkdir -p ${BOSH_INSTALL_TARGET}/bin
+cd ${BOSH_INSTALL_TARGET}/bin
+tar xzvf ${BOSH_COMPILE_TARGET}/credhub-cli/credhub-linux-*.tgz

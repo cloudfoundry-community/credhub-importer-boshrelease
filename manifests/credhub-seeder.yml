@@ -1,0 +1,35 @@
+name: credhub-seeder
+
+instance_groups:
+- name: credhub-seeder
+  azs: [ z1 ]
+  instances: 1
+  vm_type: default
+  stemcell: default
+  networks:
+  - name: default
+  jobs:
+    - name: credhub-seeder
+      release: credhub-seeder
+      properties:
+        credhub:
+          server: ((credhub_server))
+          username: ((credhub_username))
+          password: ((credhub_password))
+          ca_cert: ((credhub_ca_cert))	  
+
+releases:
+- name: credhub-seeder
+  version: latest
+
+update:
+  canaries: 1
+  max_in_flight: 32
+  canary_watch_time: 1000-30000
+  update_watch_time: 1000-30000
+  serial: false
+
+stemcells:
+- alias: default
+  os: ubuntu-trusty
+  version: latest

@@ -1,0 +1,7 @@
+set -e
+
+set -eux
+mkdir -p ${BOSH_INSTALL_TARGET}/bin
+mv jq/jq-1.5-linux64 ${BOSH_INSTALL_TARGET}/bin/jq
+chmod +x ${BOSH_INSTALL_TARGET}/bin/jq
+
