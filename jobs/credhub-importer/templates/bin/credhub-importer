@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 PATH=${PATH}:/var/vcap/packages/credhub-cli/bin/:/var/vcap/packages/jq/bin/
 
