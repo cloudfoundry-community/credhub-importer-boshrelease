@@ -1,7 +1,7 @@
-name: credhub-seeder
+name: credhub-importer
 
 instance_groups:
-- name: credhub-seeder
+- name: credhub-importer
   azs: [ z1 ]
   instances: 1
   vm_type: default
@@ -9,8 +9,8 @@ instance_groups:
   networks:
   - name: default
   jobs:
-    - name: credhub-seeder
-      release: credhub-seeder
+    - name: credhub-importer
+      release: credhub-importer
       properties:
         credhub:
           server: ((credhub_server))
@@ -19,7 +19,7 @@ instance_groups:
           ca_cert: ((credhub_ca_cert))	  
 
 releases:
-- name: credhub-seeder
+- name: credhub-importer
   version: latest
 
 update:

@@ -1,4 +1,4 @@
-# BOSH Release for credhub-seeder
+# BOSH Release for credhub-importer
 
 ## Usage
 
@@ -6,9 +6,9 @@ To use this bosh release, first upload it to your bosh:
 
 ```
 bosh target BOSH_HOST
-git clone https://github.com/cloudfoundry-community/credhub-seeder-boshrelease.git
-cd credhub-seeder-boshrelease
-bosh upload release releases/credhub-seeder/credhub-seeder-1.yml
+git clone https://github.com/cloudfoundry-community/credhub-importer-boshrelease.git
+cd credhub-importer-boshrelease
+bosh upload-release releases/credhub-importer/credhub-importer-1.yml
 ```
 
 For [bosh-lite](https://github.com/cloudfoundry/bosh-lite), you can quickly create a deployment manifest & deploy a cluster. Note that this requires that you have installed [spruce](https://github.com/geofffranks/spruce).
@@ -34,14 +34,14 @@ Create a file `my-networking.yml`:
 ``` yaml
 ---
 networks:
-  - name: credhub-seeder1
+  - name: credhub-importer1
     type: dynamic
     cloud_properties:
       security_groups:
-        - credhub-seeder
+        - credhub-importer
 ```
 
-Where `- credhub-seeder` means you wish to use an existing security group called `credhub-seeder`.
+Where `- credhub-importer` means you wish to use an existing security group called `credhub-importer`.
 
 You now suffix this file path to the `make_manifest` command:
 

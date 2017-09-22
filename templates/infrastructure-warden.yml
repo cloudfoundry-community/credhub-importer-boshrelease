@@ -1,6 +1,6 @@
 ---
 meta:
-  environment: credhub-seeder-warden
+  environment: credhub-importer-warden
 
   stemcell:
     name: bosh-warden-boshlite-ubuntu-trusty-go_agent
@@ -13,7 +13,7 @@ update:
   update_watch_time: 1000-30000
 
 instance_groups:
-  - name: just_install_packages
+  - name: credhub-importer
     networks:
       - name: credhub_seeder1
 

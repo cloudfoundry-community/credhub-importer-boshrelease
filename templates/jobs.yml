@@ -7,10 +7,10 @@ update:
   serial: false
 
 instance_groups:
-  - name: just_install_packages
+  - name: credhub-importer
     jobs:
-    - name: just_install_packages
-      release: credhub-seeder
+    - name: credhub-importer
+      release: credhub-importer
     instances: 1
     persistent_disk: 0
     resource_pool: small_z1
@@ -18,4 +18,63 @@ instance_groups:
 
 networks: (( param "Please configure the global network definitions for this Deployment" ))
 
-properties: {}
+properties:
+  credhub:
+    server: https://192.168.50.6:8844
+    username: credhub-cl
+    password: r1ti7824egkwvk5jxf0g
+    ca_cert: |
+      -----BEGIN CERTIFICATE-----
+      MIIDEzCCAfugAwIBAgIQK7yT7zwOve0hBLDSo606dDANBgkqhkiG9w0BAQsFADAz
+      MQwwCgYDVQQGEwNVU0ExFjAUBgNVBAoTDUNsb3VkIEZvdW5kcnkxCzAJBgNVBAMT
+      AmNhMB4XDTE3MDkyMjExNDUzN1oXDTE4MDkyMjExNDUzN1owMzEMMAoGA1UEBhMD
+      VVNBMRYwFAYDVQQKEw1DbG91ZCBGb3VuZHJ5MQswCQYDVQQDEwJjYTCCASIwDQYJ
+      KoZIhvcNAQEBBQADggEPADCCAQoCggEBAJ9H51DvemRsESjv2KiNfkxGfka4WPCa
+      +Crp+4dSv3ZJph7kQ1VelnSEnVz+SosCP6fhQ2wUr+6v1kpEDLmzKNlc50xfLk1+
+      iSHK6gvc/YPETSqK07e33ZqTwIJ0nmZ1rxjXjVKpU3X30gV8Af3IBxWDYbVtyTGo
+      cO2CKMz37IX/ha1x+ol0rNJnBGMNfg2hN21233QJEYvQBjOAmeIcIxTe+wDpNPJQ
+      6b4thUVbP+wk83kpJv0R7wy389Rkxp1WZPhikukbxwUbnTuUuea8wrA8OhqFh62/
+      mObosmjFCfwL8iiGmFMrHQCREexRITLDBR8HS6JQJ+iX/MU7gVEuEaUCAwEAAaMj
+      MCEwDgYDVR0PAQH/BAQDAgEGMA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQEL
+      BQADggEBABFDh5asjByMdpBv5rIH54ZPcO8P+DBlvDMI/h7fQkigIXO0d121gBnn
+      R5T6u7E9o4jEEWoBGsfRsyj6SrIDYA8FUFcaw0Fg09jKiWdQXJf6tLE7yzWpNYHR
+      fnTKOqKAnrwk2Rmh/OoJdI6EeXmJdXYy568rV7RDKk0qn11piiRCyJ/hb1XbryGC
+      lKpkctoxw4+1DXfwrjyZILAeEXVDZ6+B/1Z4KN19GlkH1wZGCimOU4ZSK9ca2FaJ
+      0C8W8EntBNFTNWMXO/+UafxMbvdEI3qgxJMMNZP/iunc/qu5fQ007cmIi+jA0bcg
+      GPumcgVMX+3EHEdJSZpXCt36KtMeE3k=
+      -----END CERTIFICATE-----
+
+      -----BEGIN CERTIFICATE-----
+      MIIDJDCCAgygAwIBAgIRAJdmZBSbXfPjwv7uwQLXooMwDQYJKoZIhvcNAQELBQAw
+      OzEMMAoGA1UEBhMDVVNBMRYwFAYDVQQKEw1DbG91ZCBGb3VuZHJ5MRMwEQYDVQQD
+      EwpDcmVkSHViIENBMB4XDTE3MDkyMjExNDUzOVoXDTE4MDkyMjExNDUzOVowOzEM
+      MAoGA1UEBhMDVVNBMRYwFAYDVQQKEw1DbG91ZCBGb3VuZHJ5MRMwEQYDVQQDEwpD
+      cmVkSHViIENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzxHGu6hM
+      VRAgGD/IK9druptGPC8i+i8hvN4teDu7WZtnMtMdY7HmYMDvgsFQEzswtchiB7zc
+      acFtLBxd6VIDVNfMtrAXzXFZsA3SHZ61w7Di1bwQ2mMjCtwD6f/lIZamAfXPd6/p
+      T9FND1G79dfSdHp7uMXbBg3P/FNQzm3tVBf8m4jaCGt3LHgoO0SajDIX8OIAexQO
+      ag1eExz4bYJQCsbB+RqfOF0lRVNmVRCptxggOkzyWuPiezxzLryXzBDlWnlBLhy2
+      5yGkLDPksGXKmTK2fCuaezwIEpeC2cuBeZwhFh4E2iKNxl6NrFZrCclrkGH28E2u
+      KJoGlEtdU0ovPQIDAQABoyMwITAOBgNVHQ8BAf8EBAMCAQYwDwYDVR0TAQH/BAUw
+      AwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAP4SZqTE407N7Wf1pDmG18CRRAJ6GewDm
+      14CgwF6hD46raWIbJNGKRwpOCAFezxv5tndO8azidc/ulEMUkDB1q0sJDpMmY8Jl
+      vVlxnQdSBVLR/oVZirH/kLkkj85+IsROYwTJAo1wfIGFsyX9xwhd7YUw7Kx5C4Xo
+      U4dBwJTQQNuSM+2oH85ZhKSS+dGDSq0zRpQduszBmdgvGaSu5PZ6g6RzDKMSgZrR
+      fpn/O6YNdHhhqF3yClgoDk0I9GSPQq1GJQtSHfalD1PmrXDCsHuX3BFN0abSAsGj
+      UDrSSQ1ZUImfgBL28KVEBkGZ4FQepYCNy6NhHRNB1EFj3jGCW2jEsg==
+      -----END CERTIFICATE-----
+    import_credentials:
+          - name: /example-ssh
+            type: ssh
+            value:
+              public_key: ssh-rsa AAAAB3NzaC1y...W9RWFM1
+              private_key: |
+                -----BEGIN RSA PRIVATE KEY-----
+                ...
+                -----END RSA PRIVATE KEY-----
+          - name: /example-password
+            type: password
+            value: SqFcE2c0AuRvet2YhrxdFbPtkBmjiq
+          - name: /example-value
+            type: value
+            value: sample

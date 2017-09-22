@@ -1,0 +1,1 @@
+<%= { "credentials" => p('credhub.import_credentials') }.to_yaml %>

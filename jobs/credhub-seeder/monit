@@ -1,5 +1,0 @@
-check process credhub-seeder
-  with pidfile /var/vcap/sys/run/credhub-seeder/job.pid
-  start program "/var/vcap/jobs/credhub-seeder/bin/ctl start"
-  stop program "/var/vcap/jobs/credhub-seeder/bin/ctl stop"
-  group vcap

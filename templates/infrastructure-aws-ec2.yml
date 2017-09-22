@@ -9,7 +9,7 @@ meta:
     version: latest
 
 instance_groups:
-  - name: just_install_packages
+  - name: credhub-importer
     networks:
       - name: credhub_seeder1
     persistent_disk: (( grab meta.persistent_disk ))

@@ -1,7 +1,7 @@
 - type: replace
-  path: /instance_groups/name=credhub-seeder/jobs/name=credhub-seeder/properties/credhub/server
+  path: /instance_groups/name=credhub-importer/jobs/name=credhub-importer/properties/credhub/server
   value: ((credhub_url))
 
 - type: replace
-  path: /instance_groups/name=credhub-seeder/jobs/name=credhub-seeder/properties/credhub/ca_cert
+  path: /instance_groups/name=credhub-importer/jobs/name=credhub-importer/properties/credhub/ca_cert
   value: ((bosh_ca_cert))

@@ -1,0 +1,41 @@
+---
+name: credhub-importer
+
+templates:
+  config/ca.pem: config/ca.pem
+  config/credentials_seed.json: config/credentials_seed.json
+  config/import.yml: config/import.yml
+  bin/credhub-importer: bin/credhub-importer
+  bin/ctl: bin/ctl
+
+
+packages:
+- credhub-cli
+- jq
+
+properties:
+  credhub.server:
+    description: Credhub server url
+  credhub.username:
+    description: Credhub username
+  credhub.password:
+    description: Credhub password
+  credhub.ca_cert:
+    description: Credhub CA cert
+  credhub.import_credentials:
+    description: Array of credentials to seed to Credhub
+    example: |
+      - name: /example-ssh
+        type: ssh
+        value:
+          public_key: ssh-rsa AAAAB3NzaC1y...W9RWFM1
+          private_key: |
+            -----BEGIN RSA PRIVATE KEY-----
+            ...
+            -----END RSA PRIVATE KEY-----
+      - name: /example-password
+        type: password
+        value: SqFcE2c0AuRvet2YhrxdFbPtkBmjiq
+      - name: /example-value
+        type: value
+        value: sample

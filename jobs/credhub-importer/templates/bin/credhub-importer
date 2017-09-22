@@ -1,0 +1,10 @@
+#!/bin/bash
+
+PATH=${PATH}:/var/vcap/packages/credhub-cli/bin/:/var/vcap/packages/jq/bin/
+
+credhub login --server <%= p('credhub.server') %> \
+        --username <%= p('credhub.username') %> \
+        --password <%= p('credhub.password') %> \
+        --ca-cert /var/vcap/jobs/credhub-importer/config/ca.pem
+
+credhub import --file /var/vcap/jobs/credhub-importer/config/import.yml

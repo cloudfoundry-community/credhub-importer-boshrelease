@@ -1,6 +1,6 @@
 manifests_dir=$(realpath $(dirname $(realpath -s $0))/../manifests)
 
-bosh -n -e bucc deploy ${manifests_dir}/credhub-seeder.yml -d credhub-seeder \
+bosh -n -e bucc deploy ${manifests_dir}/credhub-importer.yml -d credhub-importer \
      -o ${manifests_dir}/ops/dev/vars-from-bucc.yml \
      -o ${manifests_dir}/ops/dev/example-seeded-credentials.yml \
      -l <(../bucc/bin/bucc vars)

@@ -3,9 +3,9 @@
 set -e
 set -u
 
-PIDFILE=/var/vcap/sys/run/credhub-seeder/job.pid
-LOGDIR=/var/vcap/sys/log/credhub-seeder
-JOBDIR=/var/vcap/jobs/credhub-seeder
+PIDFILE=/var/vcap/sys/run/credhub-importer/job.pid
+LOGDIR=/var/vcap/sys/log/credhub-importer
+JOBDIR=/var/vcap/jobs/credhub-importer
 
 mkdir -p `dirname "$PIDFILE"`
 chown vcap:vcap `dirname "$PIDFILE"`
@@ -13,7 +13,7 @@ chown vcap:vcap `dirname "$PIDFILE"`
 mkdir -p "$LOGDIR"
 chown vcap:vcap "$LOGDIR"
 
-exec >> ${LOGDIR}/credhub-seeder-ctl.log
+exec >> ${LOGDIR}/credhub-importer-ctl.log
 exec 2>&1
 
 case $1 in
@@ -21,7 +21,7 @@ case $1 in
   start)
     echo $$ > "${PIDFILE}"
 
-    ${JOBDIR}/bin/credhub-seeder ${JOBDIR}/config/credentials_seed.json
+    ${JOBDIR}/bin/credhub-importer
 
     # pretend we're still running to keep monit happy
     echo 1 > "${PIDFILE}"
