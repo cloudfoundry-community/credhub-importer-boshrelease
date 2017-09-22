@@ -21,7 +21,7 @@ networks: (( param "Please configure the global network definitions for this Dep
 properties:
   credhub:
     server: https://192.168.50.6:8844
-    username: credhub-cl
+    username: credhub-cli
     password: r1ti7824egkwvk5jxf0g
     ca_cert: |
       -----BEGIN CERTIFICATE-----

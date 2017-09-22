@@ -3,7 +3,6 @@ name: credhub-importer
 
 templates:
   config/ca.pem: config/ca.pem
-  config/credentials_seed.json: config/credentials_seed.json
   config/import.yml: config/import.yml
   bin/credhub-importer: bin/credhub-importer
   bin/ctl: bin/ctl
@@ -11,7 +10,6 @@ templates:
 
 packages:
 - credhub-cli
-- jq
 
 properties:
   credhub.server:
