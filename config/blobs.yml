@@ -1,15 +1,4 @@
-credhub-cli:
-  size: 2712428
-  sha: 4d59c342decbc536b5baa2cede33fc92139eca4c
-credhub-cli/credhub-linux-1.0.0.tgz:
-  size: 2484864
-  sha: c78806f341af0df987e36f33038f715cf2f02635
 credhub-cli/credhub-linux-1.4.1.tgz:
   size: 2712428
+  object_id: 6a36d711-2298-4ef2-6b1d-303ccc42a668
   sha: 4d59c342decbc536b5baa2cede33fc92139eca4c
-credhub-linux-1.4.1.tgz:
-  size: 2712428
-  sha: 4d59c342decbc536b5baa2cede33fc92139eca4c
-jq/jq-1.5-linux64:
-  size: 3027945
-  sha: d8e36831c3c94bb58be34dd544f44a6c6cb88568
