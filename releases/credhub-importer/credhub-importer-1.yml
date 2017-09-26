@@ -1,0 +1,19 @@
+name: credhub-importer
+version: "1"
+commit_hash: 39a85a1
+uncommitted_changes: false
+jobs:
+- name: credhub-importer
+  version: b8bd918624390a4fd0fe653f1440991d20bce517
+  fingerprint: b8bd918624390a4fd0fe653f1440991d20bce517
+  sha1: 261c937f41dee7011d05e32ebab03bd7693bfe80
+packages:
+- name: credhub-cli
+  version: 67315a54ef1d8ed4bc0841940f704845d5047dee
+  fingerprint: 67315a54ef1d8ed4bc0841940f704845d5047dee
+  sha1: fcc27538b95be99f6d13a54985760c45dad985ae
+  dependencies: []
+license:
+  version: 267921de24673fe1da0a5cd6b3f989065fabbff0
+  fingerprint: 267921de24673fe1da0a5cd6b3f989065fabbff0
+  sha1: ee718b4e46b4ffa5c23f2ac04627b9883cf5f411
