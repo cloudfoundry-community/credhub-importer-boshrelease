@@ -4,4 +4,4 @@ name: credhub-cli
 dependencies: []
 
 files:
-- credhub-cli/credhub-linux-1.4.1.tgz
+- credhub-cli/credhub-linux-2.0.0.tgz
